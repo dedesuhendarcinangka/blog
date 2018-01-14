@@ -1,7 +1,10 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use App\Category;
 use Illuminate\Http\Request;
+
 class CategoryController extends Controller
 {
    public function index()
@@ -9,11 +12,14 @@ class CategoryController extends Controller
    	$categories = Category::all();
       return view('category.index', compact('categories'));
    }
+
    public function create()
    {
    	return view('category.create');
    	// resources / views / category / create.blade.php
+
    }
+
    public function store(Request $request)
    {
    	Category::create($request->all());

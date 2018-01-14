@@ -1,9 +1,12 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use App\Author;
 use App\Publisher;
 use App\Book;
 use Illuminate\Http\Request;
+
 class BookController extends Controller
 {
     public function index()

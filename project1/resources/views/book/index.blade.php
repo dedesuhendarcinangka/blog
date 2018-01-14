@@ -4,33 +4,30 @@
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
 				<div class="panel panel-default">
-				<div class="panel-heading">Post
-			<a href="{{route('post.create')}}" class="btn btn-sm btn-primary" > + </a></div>
+				<div class="panel-heading">Book
+			<a href="{{route('book.create')}}" class="btn btn-sm btn-primary" > + </a></div>
 			<div class="panel-body">
 				<table class="table ">
 				<tr>
 				<th>No</th>
-				<th>Image</th>
-				<th>Nama Post</th>
-				<th>Kategory</th>
+				<th>Nama Buku</th>
 				<th>Author</th>
-				<th>Dilihat sebanyak</th>
+				<th>Publisher</th>
+				<th>Year</th>
 				<th>Tindakan</th>
 				</tr>
-				@forelse($posts as $post)
+				@forelse($books as $book)
 				<tr>
-				<td>{{$post->id}}</td>
-				<td><img src="/storage/{{$post->featured_image}}" alt=""
-				height="80"></td>
-				<td>{{$post->title}}</td>
-				<td>{{$post->category->name}}</td>
-				<td>{{$post->user->name}}</td>
-				<td>{{$post->view}}</td>
-				<td><a href="{{route('post.edit', $post->id)}}" class="btn btn-sm
+				<td>{{$book->id}}</td>
+				<td>{{$book->title}}</td>
+				<td>{{$book->author->name}}</td>
+				<td>{{$book->publisher->name}}</td>
+				<td>{{$book->year}}</td>
+				<td><a href="{{route('book.edit', $book->id)}}" class="btn btn-sm
 				btn-warning"> Edit</a>
-				<a href="{{route('post.show', $post->id)}}" class="btn btn-sm
+				<a href="{{route('book.show', $book->id)}}" class="btn btn-sm
 				btn-success"> Show</a>
-				<form action="{{route('post.destroy', $post->id)}}"
+				<form action="{{route('book.destroy', $book->id)}}"
 				method="post">
 				{{ csrf_field() }}
 				{{method_field('DELETE')}}
