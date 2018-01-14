@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class CreateUsersTable extends Migration
-{
+
     /**
      * Run the migrations.
      *
@@ -14,12 +14,18 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+         $table->increments('id');
+         $table->integer('user_id')->unsigned();
+         $table->string('title');
+         $table->text('content')->nullable();
+         $table->string('featured_image');
+         $table->integer('category_id')->unsigned();
+         $table->biginteger('view')->default(o);
+         $table->foreign('user_id')->references('id')->on('users')
+                ->onUpdate('cascade')->onDelete('cascade');
+        $table->foreign('category_id')->references('id')-.on('categories')
+                ->onUpdate('cascade')->onDelete('cascade');
+            $table-timestamps();
         });
     }
 
